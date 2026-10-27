@@ -2,8 +2,7 @@ import enum
 from datetime import datetime, timezone
 from typing import Optional
 
-from sqlmodel import SQLModel, Field
-
+from sqlmodel import SQLModel, Field, Index
 
 def utcnow() -> datetime:
     return datetime.now(timezone.utc)
@@ -54,26 +53,48 @@ class Complaint(SQLModel, table=True):
 
 
 class SuspectEntity(SQLModel, table=True):
-    """Crowd-reported suspicious phone numbers / UPI IDs / URLs, so the
-    'Check a number' widget can warn future visitors."""
+    """Aggregated community reports for suspicious identifiers."""
+
+    __table_args__ = (
+        Index(
+            "ix_suspect_entity_value_type",
+            "value",
+            "entity_type",
+            unique=True,
+        ),
+    )
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    value: str = Field(index=True)  # normalized phone/UPI/URL
-    entity_type: str  # "phone" | "upi" | "url"
-    report_count: int = Field(default=1)
-    last_category: Optional[str] = None
+    value: str = Field(index=True, max_length=200)
+    entity_type: str = Field(max_length=10)
+    report_count: int = Field(default=1, ge=1)
+    last_category: Optional[str] = Field(default=None, max_length=100)
     created_at: datetime = Field(default_factory=utcnow)
     updated_at: datetime = Field(default_factory=utcnow)
 
 
 class SuspectReportLog(SQLModel, table=True):
-    """Individual report events kept for audit, linked loosely to SuspectEntity."""
+    """Individual report events for audit and abuse prevention."""
+
+    __table_args__ = (
+        Index(
+            "ix_suspect_report_entity_reporter",
+            "entity_value",
+            "entity_type",
+            "reporter_token",
+            unique=True,
+        ),
+    )
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    entity_value: str = Field(index=True)
-    entity_type: str
-    category: Optional[str] = None
-    notes: Optional[str] = None
+    entity_value: str = Field(index=True, max_length=200)
+    entity_type: str = Field(max_length=10)
+    reporter_token: Optional[str] = Field(
+        default=None,
+        max_length=36,
+    )
+    category: Optional[str] = Field(default=None, max_length=100)
+    notes: Optional[str] = Field(default=None, max_length=1000)
     created_at: datetime = Field(default_factory=utcnow)
 
 

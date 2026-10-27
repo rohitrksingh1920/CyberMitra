@@ -1,42 +1,104 @@
+# ==========================================
+# CyberMitra - Root .gitignore
+# ==========================================
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.example.*
+!.env.template
 
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+wheels/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Python virtual environments
 .venv/
 venv/
 env/
+ENV/
+backend/.venv/
 
-# Environment variables / secrets
-.env
-.env.*
-!.env.example
-
-# Node
+# Node.js and package managers
 node_modules/
+**/node_modules/
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
+lerna-debug.log*
 
-# Frontend builds
+# Frontend build outputs
 dist/
+**/dist/
 build/
+**/build/
+coverage/
 
-# IDE
+# IDE and editors
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# OS
+# Operating system files
 .DS_Store
 Thumbs.db
+Desktop.ini
 
 # Logs
 *.log
+logs/
 
-# Database
+# Local databases
 *.db
 *.sqlite
 *.sqlite3
 
-# Docker
+# Database backups and exports
+*.sql
+*.dump
+*.backup
+*.bak
+*.tar
+*.tar.gz
+
+# Keep database migrations tracked if you add them later
+# Do not ignore migration source files.
+
+# Docker local overrides
 docker-compose.override.yml
+compose.override.yaml
+docker-compose.local.yml
+
+# Local certificates and private keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Temporary files
+*.tmp
+*.temp
+*.orig
+*.rej
+
+# Local environment and editor configuration
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

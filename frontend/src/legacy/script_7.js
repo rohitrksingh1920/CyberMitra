@@ -126,6 +126,7 @@
     var input = document.getElementById("cyber-track-ref");
     var out = document.getElementById("cyber-track-output");
     var ref = (input.value || "").trim();
+
     if (!ref) {
       out.textContent = t(
         "Enter a reference code first.",
@@ -134,47 +135,74 @@
       out.classList.add("show");
       return;
     }
+
     out.textContent = t("Looking up…", "खोजा जा रहा है…");
     out.classList.add("show");
+    out.classList.remove("error");
+
     try {
       var res = await fetch(
         apiBase() + "/complaints/" + encodeURIComponent(ref),
       );
+
       if (res.status === 404) {
         out.textContent = t(
           "No complaint found with that reference code. Double-check and try again.",
           "उस संदर्भ कोड से कोई शिकायत नहीं मिली। जाँचकर पुनः प्रयास करें।",
         );
+        out.classList.add("error");
         return;
       }
-      if (!res.ok) throw new Error("HTTP " + res.status);
+
+      if (!res.ok) {
+        throw new Error("HTTP " + res.status);
+      }
+
       var data = await res.json();
+
       var statusLabels = {
         received: t("Received", "प्राप्त हुआ"),
         under_review: t("Under Review", "समीक्षा के अंतर्गत"),
         guidance_sent: t("Guidance Sent", "मार्गदर्शन भेजा गया"),
         closed: t("Closed", "बंद"),
       };
-      out.innerHTML =
-        "<b>" +
-        t("Status:", "स्थिति:") +
-        "</b> " +
-        (statusLabels[data.status] || data.status) +
-        "<br/>" +
-        "<b>" +
-        t("Name:", "नाम:") +
-        "</b> " +
-        data.name +
-        "<br/>" +
-        "<b>" +
-        t("Submitted:", "जमा किया गया:") +
-        "</b> " +
-        new Date(data.created_at).toLocaleString();
+
+      var status = statusLabels[data.status] || data.status || "Unknown";
+
+      var submitted = data.created_at
+        ? new Date(data.created_at).toLocaleString(isHi() ? "hi-IN" : "en-IN")
+        : t("Not available", "उपलब्ध नहीं");
+
+      out.textContent = "";
+
+      var statusLine = document.createElement("div");
+      var statusLabel = document.createElement("strong");
+      statusLabel.textContent = t("Status: ", "स्थिति: ");
+      statusLine.appendChild(statusLabel);
+      statusLine.appendChild(document.createTextNode(status));
+      out.appendChild(statusLine);
+
+      var refLine = document.createElement("div");
+      var refLabel = document.createElement("strong");
+      refLabel.textContent = t("Reference Code: ", "संदर्भ कोड: ");
+      refLine.appendChild(refLabel);
+      refLine.appendChild(document.createTextNode(data.reference_code || ref));
+      out.appendChild(refLine);
+
+      var dateLine = document.createElement("div");
+      var dateLabel = document.createElement("strong");
+      dateLabel.textContent = t("Submitted: ", "जमा किया गया: ");
+      dateLine.appendChild(dateLabel);
+      dateLine.appendChild(document.createTextNode(submitted));
+      out.appendChild(dateLine);
+
+      out.classList.add("show");
     } catch (err) {
       out.textContent = t(
         "Could not fetch status right now. Please try again shortly.",
         "अभी स्थिति नहीं मिल सकी। कृपया थोड़ी देर बाद पुनः प्रयास करें।",
       );
+      out.classList.add("error");
       console.error("CyberMitra trackCyberComplaint error:", err);
     }
   }
@@ -213,6 +241,33 @@
     }
   }
 
+  function getCyberMitraReporterToken() {
+    var key = "cybermitra_reporter_token";
+
+    if (!window.crypto || typeof window.crypto.randomUUID !== "function") {
+      throw new Error("Secure random UUID generation is unavailable.");
+    }
+
+    try {
+      var token = localStorage.getItem(key);
+
+      if (
+        !token ||
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+          token,
+        )
+      ) {
+        token = window.crypto.randomUUID();
+        localStorage.setItem(key, token);
+      }
+
+      return token;
+    } catch (err) {
+      // Do not silently generate a new identity on every submission.
+      throw new Error("Browser storage is unavailable.");
+    }
+  }
+
   async function reportSuspectEntity() {
     var type = document.getElementById("cyber-check-type").value;
     var valueInput = document.getElementById("cyber-check-value");
@@ -232,13 +287,31 @@
       var res = await fetch(apiBase() + "/suspects/report", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ value: value, entity_type: type }),
+        body: JSON.stringify({
+          value: value,
+          entity_type: type,
+          reporter_token: getCyberMitraReporterToken(),
+        }),
       });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      out.textContent = t(
-        "Thanks — reported. This will help warn other users.",
-        "धन्यवाद — रिपोर्ट कर दिया गया। इससे अन्य उपयोगकर्ताओं को सचेत करने में मदद मिलेगी।",
-      );
+
+      var data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.detail || "HTTP " + res.status);
+      }
+
+      out.textContent = data.message;
+
+      // var res = await fetch(apiBase() + "/suspects/report", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ value: value, entity_type: type }),
+      // });
+      // if (!res.ok) throw new Error("HTTP " + res.status);
+      // out.textContent = t(
+      //   "Thanks — reported. This will help warn other users.",
+      //   "धन्यवाद — रिपोर्ट कर दिया गया। इससे अन्य उपयोगकर्ताओं को सचेत करने में मदद मिलेगी।",
+      // );
     } catch (err) {
       out.textContent = t(
         "Could not submit the report right now. Please try again shortly.",
