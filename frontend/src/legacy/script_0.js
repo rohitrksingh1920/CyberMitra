@@ -1,4 +1,21 @@
 /* LANGUAGE */
+function setComplaintGuideVideoLanguage(lang) {
+  const video = document.getElementById("complaint-guide-video");
+  const source = document.getElementById("complaint-guide-video-source");
+
+  if (!video || !source) return;
+
+  const videoPath =
+    lang === "hi"
+      ? "/CyberMitra_Hindi_4K_UHD.mp4"
+      : "/CyberMitra_English_4K_UHD.mp4";
+
+  if (source.getAttribute("src") !== videoPath) {
+    source.setAttribute("src", videoPath);
+    video.load();
+  }
+}
+
 function setLang(l) {
   document.documentElement.setAttribute("data-lang", l);
   document.getElementById("btn-en").classList.toggle("active", l === "en");
@@ -7,6 +24,8 @@ function setLang(l) {
   document
     .querySelectorAll(".play-btn.playing")
     .forEach((b) => b.classList.remove("playing"));
+  setComplaintGuideVideoLanguage(l);
+
   try {
     localStorage.setItem("cybermitra-lang", l);
   } catch (e) {}
@@ -1541,6 +1560,7 @@ const QUIZ = [
       hi: "सही — असली गेम खरीदारी हमेशा ऑफ़िशियल ऐप या स्टोर के अंदर ही होती है।",
     },
   },
+
   {
     q: {
       en: "Where should you report a cyber crime in India?",
@@ -1548,21 +1568,25 @@ const QUIZ = [
     },
     opts: [
       {
-        en: "Call 1930 or report at <a href=&quot;https://cybercrime.gov.in/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>cybercrime.gov.in</a>",
-        hi: "1930 पर कॉल करें या <a href=&quot;https://cybercrime.gov.in/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>cybercrime.gov.in</a> पर रिपोर्ट करें",
+        en: "Call 1930 or report at <a href='https://cybercrime.gov.in/' target='_blank' rel='noopener noreferrer'>cybercrime.gov.in</a>",
+        hi: "1930 पर कॉल करें या <a href='https://cybercrime.gov.in/' target='_blank' rel='noopener noreferrer'>cybercrime.gov.in</a> पर रिपोर्ट करें",
       },
-      { en: "Post about it on social media", hi: "सोशल मीडिया पर पोस्ट करें" },
+      {
+        en: "Post about it on social media",
+        hi: "सोशल मीडिया पर पोस्ट करें",
+      },
       {
         en: "Wait a few weeks and see what happens",
-        hi: "कुछ हफ़्ते इंतज़ार करें",
+        hi: "कुछ हफ्ते इंतज़ार करें",
       },
     ],
     correct: 0,
     fb: {
-      en: "Correct — and reporting fast, within the first hours, gives the best chance of freezing the money.",
-      hi: "सही — और पहले कुछ घंटों में रिपोर्ट करने से पैसा रोकने की संभावना सबसे ज़्यादा होती है।",
+      en: "Correct — reporting fast, within the first hours, gives the best chance of freezing the money.",
+      hi: "सही — शुरुआती कुछ घंटों में रिपोर्ट करने से पैसे रोकने की संभावना सबसे ज़्यादा होती है।",
     },
   },
+
   {
     q: {
       en: 'A job offer asks for a fee to "secure your position" before you start. Warning sign?',
