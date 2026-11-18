@@ -25,16 +25,16 @@ internet.`</strong>`{=html}
 ```{=html}
 <p align="center">
 ```
-A bilingual cybersecurity awareness platform helping individuals
-recognize online threats, understand cyber fraud, and access practical
-cybercrime support resources.
+A bilingual cybersecurity awareness and assistance platform helping
+people recognize online threats, understand cyber fraud, and access
+practical cybercrime support resources.
 ```{=html}
 </p>
 ```
 ```{=html}
 <p align="center">
 ```
-`<img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" alt="Project Status" />`{=html}
+`<img src="https://img.shields.io/badge/Project-CyberMitra-2563EB?style=for-the-badge" alt="CyberMitra" />`{=html}
 `<img src="https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />`{=html}
 `<img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />`{=html}
 `<img src="https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />`{=html}
@@ -47,176 +47,84 @@ cybercrime support resources.
 
 ## 🌐 About CyberMitra
 
-The internet creates endless opportunities, but it also exposes people
-to increasingly sophisticated cyber threats.
+The internet creates opportunities for learning, communication, and
+business, but it also exposes people to increasingly sophisticated cyber
+threats. Many users are unsure how to identify scams, what to do after a
+cyber incident, or where to find reliable reporting guidance.
 
-**CyberMitra -- Cyber Security Solutions** aims to make cybersecurity
-awareness accessible, understandable, and actionable.
+**CyberMitra -- Cyber Security Solutions** is designed to make digital
+safety knowledge easier to understand and act on. It brings
+cybersecurity awareness, fraud-prevention information, complaint
+assistance, and emergency resources together in one accessible platform.
 
-Built as a bilingual platform for English- and Hindi-speaking users,
-CyberMitra brings together cyber safety education, fraud awareness,
-reporting guidance, and useful emergency resources in one place.
+The platform is designed with English- and Hindi-speaking users in mind.
 
-Our mission is simple:
+> **Our mission: Make digital safety knowledge accessible to everyone.**
 
-> **Make digital safety knowledge accessible to everyone.**
+## ✨ Key Features
 
-## ✨ What Makes CyberMitra Special?
+  -----------------------------------------------------------------------
+  Feature                             Description
+  ----------------------------------- -----------------------------------
+  🔍 Fraud Awareness                  Learn to recognize suspicious
+                                      messages, calls, links, phishing
+                                      attempts, and common online scams.
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-```{=html}
-<h3>
-```
-🔍 Fraud Awareness
-```{=html}
-</h3>
-```
-Learn to recognize suspicious messages, calls, links, and common online
-scams.
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-```{=html}
-<h3>
-```
-🚨 Cybercrime Support
-```{=html}
-</h3>
-```
-Find useful guidance and resources when dealing with cybercrime.
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-```{=html}
-<h3>
-```
-📋 Complaint Assistance
-```{=html}
-</h3>
-```
-Access complaint-related information and FIR preparation resources.
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-```{=html}
-<h3>
-```
-📞 Emergency Resources
-```{=html}
-</h3>
-```
-Find important cybercrime reporting contacts and emergency numbers.
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
-```{=html}
-<h3>
-```
-🌏 Bilingual Experience
-```{=html}
-</h3>
-```
-Explore cybersecurity awareness content in English and Hindi.
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
-```{=html}
-<h3>
-```
-📱 Responsive Interface
-```{=html}
-</h3>
-```
-Access the platform through desktop, tablet, and mobile devices.
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
+  🚨 Cybercrime Support               Find practical guidance and
+                                      resources for responding to
+                                      cybercrime incidents.
+
+  📋 Complaint Assistance             Access complaint-related
+                                      information and guidance for
+                                      preparing incident details.
+
+  📞 Emergency Resources              Find useful cybercrime reporting
+                                      contacts and support information.
+
+  🌏 Bilingual Experience             Access cybersecurity awareness
+                                      content in English and Hindi.
+
+  📱 Responsive Interface             Use the platform across desktop,
+                                      tablet, and mobile screen sizes.
+
+  🛡️ Security-focused design          Uses a backend API,
+                                      environment-based configuration,
+                                      and reverse-proxy deployment
+                                      architecture.
+  -----------------------------------------------------------------------
+
+*Feature availability may depend on the current application build and
+deployment configuration.*
+
 ## 🖥️ Platform Preview
 
-```{=html}
-<p align="center">
-```
-`<em>`{=html}CyberMitra --- Designed to make cybersecurity awareness
-simple and accessible.`</em>`{=html}
-```{=html}
-</p>
-```
-```{=html}
-<!-- Add your actual application screenshots here -->
-```
-     English Experience       Hindi Experience
-  ------------------------ ----------------------
-   Add English screenshot   Add Hindi screenshot
+Add screenshots of the running application to the table below when
+available.
 
-## ⚙️ Technology Behind CyberMitra
+      English Experience          Hindi Experience
+  --------------------------- -------------------------
+   Add English UI screenshot   Add Hindi UI screenshot
 
-CyberMitra combines modern frontend technologies, a Python-powered
-backend, and containerized deployment.
+## 🧰 Technology Stack
 
-```{=html}
-<p align="center">
-```
-`<img src="https://skillicons.dev/icons?i=react,js,python,fastapi,postgres,docker,nginx,git,github,vite" alt="Technology Stack" />`{=html}
-```{=html}
-</p>
-```
-  Layer              Technology
-  ------------------ -------------------------
-  Frontend           React, JavaScript, Vite
-  Backend            Python, FastAPI
-  Database           PostgreSQL
-  ORM                SQLAlchemy
-  Reverse Proxy      Nginx
-  Containerization   Docker
-  Orchestration      Docker Compose
-  Version Control    Git, GitHub
+CyberMitra combines a modern web frontend, a Python API, a relational
+database, and container-based deployment.
 
-## 🏗️ Project Architecture
+  Layer               Technology
+  ------------------- -------------------------
+  Frontend            React, JavaScript, Vite
+  Backend             Python, FastAPI
+  Database            PostgreSQL
+  ORM / Data Access   SQLAlchemy
+  Reverse Proxy       Nginx
+  Containerization    Docker
+  Orchestration       Docker Compose
+  Version Control     Git and GitHub
+
+## 🏗️ Project Structure
 
 ``` text
 CyberMitra/
-│
 ├── backend/
 │   ├── app/
 │   │   ├── routers/
@@ -224,23 +132,31 @@ CyberMitra/
 │   │   ├── main.py
 │   │   ├── config.py
 │   │   ├── database.py
+│   │   ├── limiter.py
 │   │   ├── models.py
 │   │   └── schemas.py
+│   ├── .dockerignore
 │   ├── Dockerfile
 │   └── requirements.txt
-│
+├── deploy/
+│   └── init-letsencrypt.sh
 ├── frontend/
+│   ├── partials/
 │   ├── public/
 │   ├── src/
 │   │   ├── components/
 │   │   ├── context/
 │   │   ├── data/
 │   │   └── styles/
-│   └── Dockerfile
-│
-├── deploy/
+│   ├── Dockerfile
+│   └── legal.config.json
 ├── nginx/
+│   ├── conf.d/
+│   ├── https/
+│   │   └── app.conf.template
+│   └── nginx.conf
 ├── docker-compose.yml
+├── docker-compose.dev.yml
 ├── docker-compose.https.yml
 ├── .env.example
 ├── .gitignore
@@ -249,154 +165,218 @@ CyberMitra/
 
 ## 🚀 Getting Started
 
-Want to run CyberMitra locally? Follow these steps.
-
 ### Prerequisites
 
-Make sure you have installed:
+Install the following tools:
 
--   [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 -   [Git](https://git-scm.com/)
--   Docker Compose (included with Docker Desktop)
+-   [Docker Desktop](https://www.docker.com/products/docker-desktop/) on
+    Windows or Docker Engine on Linux
+-   Docker Compose v2 (included with current Docker Desktop
+    installations)
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ``` bash
 git clone https://github.com/rohitrksingh1920/CyberMitra.git
 cd CyberMitra
 ```
 
-### 2. Configure Environment Variables
+### 2. Configure environment variables
 
-Create your environment configuration file.
+Create your local environment file from the example.
 
-**Windows PowerShell:**
+**Windows PowerShell**
 
 ``` powershell
 Copy-Item .env.example .env
 ```
 
-**Linux / macOS:**
+**Linux / macOS**
 
 ``` bash
 cp .env.example .env
 ```
 
-Open `.env` and configure the required credentials, database settings,
-security keys, and other environment variables.
+Open `.env` and configure the values required by your environment. At
+minimum, review the database credentials, allowed frontend origins, and
+administrative API key.
 
-> 🔐 **Security First:** Never upload your actual `.env` file,
-> passwords, API keys, or production credentials to GitHub.
+Use strong, unique values for secrets. Do not copy production
+credentials into documentation or commit your `.env` file.
 
-### 3. Build and Launch CyberMitra
+### 3. Build and start the application
 
 ``` bash
 docker compose --env-file .env up -d --build
 ```
 
-### 4. Verify Running Containers
+### 4. Check container status
 
 ``` bash
 docker compose ps
 ```
 
-### 5. Monitor Application Logs
+### 5. View application logs
 
 ``` bash
 docker compose logs -f
 ```
 
-### 6. Stop the Application
+To inspect one service:
+
+``` bash
+docker compose logs -f backend
+docker compose logs -f frontend
+docker compose logs -f proxy
+docker compose logs -f db
+```
+
+### 6. Stop the application
 
 ``` bash
 docker compose down
 ```
 
+To stop the application and remove its containers and network while
+retaining named database volumes:
+
+``` bash
+docker compose down
+```
+
+**Note:** Do not add `-v` unless you intentionally want to remove the
+named volumes and understand the data-loss implications.
+
+## 🧪 Development Configuration
+
+The repository includes a development Compose configuration. Review
+`docker-compose.dev.yml` before using it, then start the development
+stack with:
+
+``` bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml --env-file .env up -d --build
+```
+
+The exact services, ports, and environment variables are defined in the
+Compose files. Check the effective configuration before starting:
+
+``` bash
+docker compose --env-file .env -f docker-compose.yml config
+```
+
 ## ☁️ Deployment
 
-CyberMitra is containerized using Docker Compose, making it suitable for
-deployment on cloud-based Linux servers.
+CyberMitra is packaged for deployment on a Linux server using Docker
+Compose and Nginx. An AWS EC2 instance is one possible hosting target.
 
-Potential deployment environments include:
+### Production deployment outline
 
--   **AWS EC2** -- Run the complete Docker Compose application on a
-    Linux instance.
--   **Microsoft Azure** -- Deploy using suitable container hosting
-    services.
--   **Other Linux VPS providers** -- Run the application with Docker and
-    Nginx.
+1.  Provision a Linux server and restrict inbound access using its
+    firewall / security group.
+2.  Install Docker Engine and the Docker Compose plugin.
+3.  Clone the repository onto the server.
+4.  Create and securely configure the production `.env` file.
+5.  Configure PostgreSQL persistence and take a backup plan into
+    account.
+6.  Point your domain's DNS records to the server.
+7.  Configure the domain and HTTPS settings in the deployment
+    configuration.
+8.  Validate the Nginx and Docker Compose configuration.
+9.  Start the application and verify frontend, API, database, and HTTPS
+    connectivity.
 
-### Production Deployment Checklist
+### HTTPS / Let's Encrypt
 
--   [ ] Prepare a Linux server.
--   [ ] Install Docker and Docker Compose.
--   [ ] Configure production environment variables.
--   [ ] Configure PostgreSQL and persistent storage.
--   [ ] Connect your domain and configure DNS.
--   [ ] Configure HTTPS using Let's Encrypt and Certbot.
--   [ ] Configure firewall rules and security settings.
--   [ ] Launch the Docker Compose services.
--   [ ] Verify frontend, backend, database, and HTTPS connectivity.
+The repository includes an HTTPS Compose override
+(`docker-compose.https.yml`) and a certificate initialization script
+(`deploy/init-letsencrypt.sh`).
 
-## 🔒 Security & Privacy
+Before using the initialization script:
 
-Security is an important part of CyberMitra.
+-   Own or control the domain you intend to use.
+-   Point the domain and any configured `www` hostname to the server.
+-   Ensure ports 80 and 443 are reachable from the internet.
+-   Configure the required environment variables on the server.
+-   Review the script and Nginx template for your domain before
+    execution.
 
--   Environment variables are excluded from version control.
--   Production secrets should be strong and private.
--   API access should be restricted to configured origins.
--   Application traffic should use HTTPS in production.
--   Database backups and private certificates should never be committed.
--   Dependencies and container images should be maintained regularly.
+Do not run certificate initialization with placeholder domains. After
+certificate issuance, verify the Nginx configuration and confirm that
+certificate renewal is followed by an Nginx reload so renewed
+certificates are actually served.
 
-## 🧪 Testing & Verification
+## 🔐 Security and Privacy
 
-Before deploying changes, verify:
+-   Keep `.env` files and production secrets out of version control.
+-   Use strong database passwords and administrative keys.
+-   Restrict CORS origins to the trusted application domains.
+-   Serve production traffic over HTTPS.
+-   Keep database storage persistent and establish regular, tested
+    backups.
+-   Do not commit private keys, certificates, database dumps, or user
+    data.
+-   Keep dependencies and container images updated.
+-   Review access controls, rate limits, logs, and error handling before
+    production use.
+
+## ✅ Testing and Verification
+
+Before releasing a change, verify the areas relevant to that change:
 
 -   Frontend production build.
--   Backend API availability.
--   Database connectivity.
--   Application navigation and responsiveness.
+-   Backend startup and API health.
+-   Database connectivity and persistence.
+-   Frontend-to-backend communication.
 -   English and Hindi content.
 -   Complaint and reporting workflows.
--   Docker container health.
--   HTTPS configuration.
+-   Responsive layout and navigation.
+-   Docker Compose configuration and container health.
+-   HTTP-to-HTTPS redirection and certificate validity in production.
+
+Useful configuration validation:
+
+``` bash
+docker compose --env-file .env config --quiet
+docker compose --env-file .env -f docker-compose.yml -f docker-compose.https.yml config --quiet
+```
 
 ## 🗺️ Project Roadmap
 
-Our vision is to continuously improve the CyberMitra experience.
-
--   [x] Bilingual English and Hindi interface
+-   [x] English and Hindi user experience
 -   [x] Cybersecurity awareness content
 -   [x] Responsive frontend
 -   [x] Docker-based application setup
 -   [x] PostgreSQL integration
 -   [x] Legal and privacy information pages
--   [ ] Production cloud deployment
--   [ ] Further cybersecurity awareness features
--   [ ] Continuous improvements based on user feedback
+-   [x] Production-oriented Compose and Nginx configuration
+-   [ ] Complete cloud deployment
+-   [ ] Verify production HTTPS and certificate renewal
+-   [ ] Continue expanding cybersecurity awareness and assistance
+    features
 
 ## 🤝 Contributing
 
-We believe a safer internet is a collective responsibility.
-
-Contributions, suggestions, bug reports, and improvements are welcome.
+Contributions and suggestions that improve digital safety are welcome.
 
 1.  Fork the repository or create an authorized feature branch.
-2.  Create a new branch for your contribution.
-3.  Make your changes.
-4.  Test your implementation.
-5.  Submit a pull request with a clear description.
+2.  Create a focused branch for your change.
+3.  Make the change and test it.
+4.  Commit with a clear message.
+5.  Open a pull request describing the change and its verification.
 
 ## 📜 License
 
-Refer to the repository's `LICENSE` file for licensing information.
+Refer to the repository's `LICENSE` file for licensing terms. If no
+license file is present, contact the project maintainers before reusing
+or distributing the code.
 
-## 📬 Connect With Us
+## 📬 Contact and Support
 
-Have suggestions, questions, or feedback?
-
-Open an issue in the repository or contact the project maintainers.
+For questions, suggestions, or bug reports, open an issue in the
+[CyberMitra GitHub
+repository](https://github.com/rohitrksingh1920/CyberMitra) or use the
+contact information published on the project website.
 
 ------------------------------------------------------------------------
 
@@ -411,8 +391,7 @@ Digital Future.`</strong>`{=html}
 ```{=html}
 <p align="center">
 ```
-`<em>`{=html}Building awareness today for a safer digital
-tomorrow.`</em>`{=html}
+Building awareness today for a safer digital tomorrow.
 ```{=html}
 </p>
 ```
