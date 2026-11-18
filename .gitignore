@@ -1,3 +1,4 @@
+
 # ==========================================
 # CyberMitra - Root .gitignore
 # ==========================================
@@ -7,6 +8,7 @@
 .env.*
 !.env.example
 !.env.example.*
+!.env.sample
 !.env.template
 
 # Python
@@ -47,6 +49,7 @@ dist/
 build/
 **/build/
 coverage/
+**/coverage/
 
 # IDE and editors
 .vscode/
@@ -70,15 +73,15 @@ logs/
 *.sqlite3
 
 # Database backups and exports
-*.sql
 *.dump
 *.backup
 *.bak
-*.tar
-*.tar.gz
+*.sql.gz
+*.dump.gz
 
-# Keep database migrations tracked if you add them later
-# Do not ignore migration source files.
+# IMPORTANT:
+# Do not ignore *.sql
+# Database migrations must be committed.
 
 # Docker local overrides
 docker-compose.override.yml
@@ -97,8 +100,28 @@ docker-compose.local.yml
 *.orig
 *.rej
 
-# Local environment and editor configuration
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Local certificates / Certbot data
+deploy/certbot-data/conf/live/
+deploy/certbot-data/conf/archive/
+deploy/certbot-data/conf/accounts/
+deploy/certbot-data/conf/renewal/
+
+# Runtime data
+logs/
+tmp/
+temp/
+uploads/
+storage/
+media_uploads/
+
+# Docker persistent data
+**/postgres_data/
+**/redis_data/
+**/minio_data/
+
+# Local recordings
+Recording*.mp4
+
+# Local database backup files
+cybermitra-before-report-fix.sql
+cybermitra-production-check.dump

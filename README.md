@@ -1,188 +1,253 @@
-# CyberMitra — Full-Stack Deployment Guide
+# 🛡️ CyberMitra — Cyber Security Solutions
 
-This project has three parts:
+\<p align="center">
+&#x20; \<img src="frontend/public/cybermitra-logo.png" alt="CyberMitra Logo" width="180" />
+\</p>
 
-```
-cybermitra/
-├── backend/     FastAPI API (complaints, suspect checker, contact, quiz, pledge)
-├── frontend/    Your existing React/Vite site, now wired to the backend
-├── nginx/       Edge reverse proxy config (TLS termination, routing)
-├── deploy/      Let's Encrypt bootstrap script
-├── docker-compose.yml       Production stack (db + backend + frontend + proxy + certbot)
-└── docker-compose.dev.yml   Local dev stack (db + backend only; run frontend with `npm run dev`)
-```
+\<h3 align="center">
+&#x20; Spot the Scam Before It Spots You.
+\</h3>
 
-## What was added to the backend
+\<p align="center">
+&#x20; \<strong>Your digital safety companion for a safer internet.\</strong>
+\</p>
 
-| Endpoint | Purpose |
-|---|---|
-| `POST /api/complaints` | Submit an FIR/complaint draft → returns a reference code (e.g. `CM-20260822-AB12CD`) |
-| `GET /api/complaints/{ref}` | Citizen-facing: track a complaint by reference code |
-| `GET /api/complaints` | Admin-only (`X-Admin-Key` header): list all complaints |
-| `PATCH /api/complaints/{ref}` | Admin-only: update status/notes |
-| `POST /api/suspects/check` | Check if a phone/UPI/URL was reported before |
-| `POST /api/suspects/report` | Report a suspicious phone/UPI/URL |
-| `POST /api/contact` | Contact form submissions |
-| `POST /api/quiz/results`, `GET /api/quiz/stats` | Quiz score logging |
-| `POST /api/pledge`, `GET /api/pledge/count` | Pledge signatures |
-| `GET /api/health` | Health check |
+\<p align="center">   A bilingual cybersecurity awareness platform helping individuals recognize online threats, understand cyber fraud, and access practical cybercrime support resources. \</p>
 
-Interactive API docs are available at `/api/docs` (Swagger) once running.
-
-**Important:** these complaint drafts are stored by CyberMitra only — they are **not** an official FIR. The UI always tells users to also file at cybercrime.gov.in or call 1930, exactly as your original site did.
-
-## What changed in the frontend
-
-Your site's "Report Cyber Crime" popup now has two new tabs alongside "Official Portal" and "FIR Format":
-
-- **Track Complaint** — enter a reference code, see status
-- **Check a Number/Link** — check/report a suspicious phone number, UPI ID, or URL
-
-The FIR Format tab also gained a **"Submit to CyberMitra & Get Reference No."** button that posts the form to the backend and displays the reference code. All of this is bilingual (EN/HI), matching your existing pattern.
-
-No other part of your design/content was touched — same CSS, same layout, same copy.
+\<p align="center">   \<img src="[https://img.shields.io/badge/Status-Active-success?style=for-the-badge](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)" alt="Project Status" />   \<img src="[https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=black](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge\&logo=react\&logoColor=black)" alt="React" />   \<img src="[https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge\&logo=fastapi\&logoColor=white)" alt="FastAPI" />   \<img src="[https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge\&logo=postgresql\&logoColor=white)" alt="PostgreSQL" />   \<img src="[https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white](https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)" alt="Docker" /> \</p>
 
 ---
 
-## Part 1 — Get a server
+## 🌐 About CyberMitra
 
-If you don't have one yet: buy a small VPS (DigitalOcean, Hetzner, Linode, AWS Lightsail — any works). Cheapest tier is enough for this app (1 vCPU / 1–2GB RAM). Choose **Ubuntu 22.04 or 24.04**.
+The internet creates endless opportunities, but it also exposes people to increasingly sophisticated cyber threats.
 
-You'll get an IP address, e.g. `203.0.113.10`.
+**CyberMitra – Cyber Security Solutions** aims to make cybersecurity awareness accessible, understandable, and actionable.
 
-## Part 2 — Point your domain at the server
+Built as a bilingual platform for English- and Hindi-speaking users, CyberMitra brings together cyber safety education, fraud awareness, reporting guidance, and useful emergency resources in one place.
 
-In your domain registrar's DNS settings, add:
+Our mission is simple:
 
-| Type | Name | Value |
-|---|---|---|
-| A | `@` | `203.0.113.10` |
-| A | `www` | `203.0.113.10` |
+> **Make digital safety knowledge accessible to everyone.**
 
-DNS can take a few minutes to a few hours to propagate. Check with:
-```bash
-dig +short yourdomain.com
+## ✨ What Makes CyberMitra Special?
+
+\<table>   \<tr>     \<td width="50%">       \<h3>🔍 Fraud Awareness\</h3>       Learn to recognize suspicious messages, calls, links, and common online scams.     \</td>     \<td width="50%">       \<h3>🚨 Cybercrime Support\</h3>       Find useful guidance and resources when dealing with cybercrime.     \</td>   \</tr>   \<tr>     \<td width="50%">       \<h3>📋 Complaint Assistance\</h3>       Access complaint-related information and FIR preparation resources.     \</td>     \<td width="50%">       \<h3>📞 Emergency Resources\</h3>       Find important cybercrime reporting contacts and emergency numbers.     \</td>   \</tr>   \<tr>     \<td width="50%">       \<h3>🌏 Bilingual Experience\</h3>       Explore cybersecurity awareness content in English and Hindi.     \</td>     \<td width="50%">       \<h3>📱 Responsive Interface\</h3>       Access the platform through desktop, tablet, and mobile devices.     \</td>   \</tr> \</table>
+
+## 🖥️ Platform Preview
+
+\<p align="center">   \<em>CyberMitra — Designed to make cybersecurity awareness simple and accessible.\</em> \</p>
+
+\<!-- Add your actual application screenshots here -->
+
+|   English Experience   |   Hindi Experience   |
+| :--------------------: | :------------------: |
+| Add English screenshot | Add Hindi screenshot |
+
+## ⚙️ Technology Behind CyberMitra
+
+CyberMitra combines modern frontend technologies, a Python-powered backend, and containerized deployment.
+
+\<p align="center">   \<img src="[https://skillicons.dev/icons?i=react,js,python,fastapi,postgres,docker,nginx,git,github,vite](https://skillicons.dev/icons?i=react,js,python,fastapi,postgres,docker,nginx,git,github,vite)" alt="Technology Stack" /> \</p>
+
+| Layer            | Technology              |
+| ---------------- | ----------------------- |
+| Frontend         | React, JavaScript, Vite |
+| Backend          | Python, FastAPI         |
+| Database         | PostgreSQL              |
+| ORM              | SQLAlchemy              |
+| Reverse Proxy    | Nginx                   |
+| Containerization | Docker                  |
+| Orchestration    | Docker Compose          |
+| Version Control  | Git, GitHub             |
+
+## 🏗️ Project Architecture
+
+```text
+CyberMitra/
+│
+├── backend/
+│   ├── app/
+│   │   ├── routers/
+│   │   ├── utils/
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   ├── models.py
+│   │   └── schemas.py
+│   ├── Dockerfile
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── data/
+│   │   └── styles/
+│   └── Dockerfile
+│
+├── deploy/
+├── nginx/
+├── docker-compose.yml
+├── docker-compose.https.yml
+├── .env.example
+├── .gitignore
+└── README.md
 ```
-It should return your server's IP.
 
-## Part 3 — Install Docker on the server
+## 🚀 Getting Started
 
-SSH into the server, then:
+Want to run CyberMitra locally? Follow these steps.
+
+### Prerequisites
+
+Make sure you have installed:
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Git](https://git-scm.com/)
+- Docker Compose (included with Docker Desktop)
+
+### 1. Clone the Repository
+
 ```bash
-curl -fsSL https://get.docker.com | sh
-sudo usermod -aG docker $USER
-newgrp docker
+git clone https://github.com/rohitrksingh1920/CyberMitra.git
+
+cd CyberMitra
 ```
 
-Also open the firewall for web traffic (skip if your provider handles this):
-```bash
-sudo ufw allow OpenSSH
-sudo ufw allow 80
-sudo ufw allow 443
-sudo ufw enable
+### 2. Configure Environment Variables
+
+Create your environment configuration file.
+
+**Windows PowerShell:**
+
+```powershell
+Copy-Item .env.example .env
 ```
 
-## Part 4 — Upload the project
+**Linux / macOS:**
 
-From your own machine:
 ```bash
-scp -r cybermitra your-user@203.0.113.10:~/cybermitra
-```
-Or `git clone` it if you push this to a repo.
-
-## Part 5 — Configure secrets
-
-On the server:
-```bash
-cd ~/cybermitra
 cp .env.example .env
-nano .env
-```
-Set a strong `POSTGRES_PASSWORD`, a random `ADMIN_API_KEY` (this protects the admin endpoints — treat it like a password), and your real domain in `CORS_ORIGINS`.
-
-Generate a random key quickly with:
-```bash
-openssl rand -hex 32
 ```
 
-## Part 6 — Get HTTPS certificates and launch
+Open `.env` and configure the required credentials, database settings, security keys, and other environment variables.
+
+> 🔐 **Security First:** Never upload your actual `.env` file, passwords, API keys, or production credentials to GitHub.
+
+### 3. Build and Launch CyberMitra
 
 ```bash
-chmod +x deploy/init-letsencrypt.sh
-DOMAIN=yourdomain.com EMAIL=you@example.com ./deploy/init-letsencrypt.sh
+docker compose --env-file .env up -d --build
 ```
 
-This script:
-1. Writes your domain into the nginx config
-2. Starts nginx with a temporary certificate so it can boot
-3. Requests a real certificate from Let's Encrypt
-4. Reloads nginx with the real certificate
-5. Brings up the full stack (`db`, `backend`, `frontend`, `proxy`, `certbot`)
-
-Visit `https://yourdomain.com` — your site should be live, and the FIR form, complaint tracker, and number checker should all work end-to-end.
-
-> Tip: the very first time, test with `STAGING=1 DOMAIN=... EMAIL=... ./deploy/init-letsencrypt.sh` to get a fake (browser-untrusted) certificate first — this avoids hitting Let's Encrypt's rate limits if something's misconfigured. Once it works, rerun without `STAGING=1`.
-
-Certificates auto-renew every 12 hours via the `certbot` service (Let's Encrypt certs are valid 90 days; certbot renews when there's <30 days left).
-
-## Everyday operations
+### 4. Verify Running Containers
 
 ```bash
-# View logs
-docker compose logs -f backend
-docker compose logs -f proxy
+docker compose ps
+```
 
-# Redeploy after code changes
-docker compose up -d --build
+### 5. Monitor Application Logs
 
-# Stop everything
+```bash
+docker compose logs -f
+```
+
+### 6. Stop the Application
+
+```bash
 docker compose down
-
-# Stop and wipe the database (careful!)
-docker compose down -v
 ```
 
-## Using the admin endpoints
+## ☁️ Deployment
 
-To see submitted complaints:
-```bash
-curl -H "X-Admin-Key: <your ADMIN_API_KEY>" https://yourdomain.com/api/complaints
-```
+CyberMitra is containerized using Docker Compose, making it suitable for deployment on cloud-based Linux servers.
 
-To update a complaint's status:
-```bash
-curl -X PATCH https://yourdomain.com/api/complaints/CM-20260822-AB12CD \
-  -H "X-Admin-Key: <your ADMIN_API_KEY>" \
-  -H "Content-Type: application/json" \
-  -d '{"status": "under_review", "admin_notes": "Called back, gathering more info"}'
-```
+Potential deployment environments include:
 
-Consider building a small internal dashboard later if you're triaging complaints often — the API already supports everything a dashboard would need (list, filter via pagination, update status).
+- **AWS EC2** – Run the complete Docker Compose application on a Linux instance.
+- **Microsoft Azure** – Deploy using suitable container hosting services.
+- **Other Linux VPS providers** – Run the application with Docker and Nginx.
 
-## Local development
+### Production Deployment Checklist
 
-Run backend + Postgres in Docker, and the frontend natively (with hot reload):
-```bash
-docker compose -f docker-compose.dev.yml up --build -d
-cd frontend
-npm install
-npm run dev
-```
-Visit `http://localhost:5173`. Vite proxies `/api` to `http://localhost:8000` automatically — no CORS issues in dev.
+- [ ] Prepare a Linux server.
+- [ ] Install Docker and Docker Compose.
+- [ ] Configure production environment variables.
+- [ ] Configure PostgreSQL and persistent storage.
+- [ ] Connect your domain and configure DNS.
+- [ ] Configure HTTPS using Let's Encrypt and Certbot.
+- [ ] Configure firewall rules and security settings.
+- [ ] Launch the Docker Compose services.
+- [ ] Verify frontend, backend, database, and HTTPS connectivity.
 
-## Database migrations
+## 🔒 Security & Privacy
 
-Tables are auto-created on backend startup (`SQLModel.metadata.create_all`), which is fine for getting started. If you later need schema migrations without data loss (e.g. adding a column in production), switch to Alembic:
-```bash
-cd backend
-pip install -r requirements.txt --break-system-packages
-alembic init alembic
-# then configure alembic.ini / env.py to point at app.database.engine and app.models
-```
+Security is an important part of CyberMitra.
 
-## Security notes
+- Environment variables are excluded from version control.
+- Production secrets should be strong and private.
+- API access should be restricted to configured origins.
+- Application traffic should use HTTPS in production.
+- Database backups and private certificates should never be committed.
+- Dependencies and container images should be maintained regularly.
 
-- Change `ADMIN_API_KEY` and `POSTGRES_PASSWORD` before going live — the defaults in `.env.example` are placeholders only.
-- The backend already rate-limits complaint/contact/suspect-report submissions to reduce spam/abuse.
-- Postgres and the backend are never exposed directly to the internet — only `proxy` (80/443) is published; everything else talks over Docker's internal network.
-- Consider adding a simple CAPTCHA (e.g. Cloudflare Turnstile) to the FIR form if you see spam submissions in production.
+## 🧪 Testing & Verification
+
+Before deploying changes, verify:
+
+- Frontend production build.
+- Backend API availability.
+- Database connectivity.
+- Application navigation and responsiveness.
+- English and Hindi content.
+- Complaint and reporting workflows.
+- Docker container health.
+- HTTPS configuration.
+
+## 🗺️ Project Roadmap
+
+Our vision is to continuously improve the CyberMitra experience.
+
+- [x] Bilingual English and Hindi interface
+- [x] Cybersecurity awareness content
+- [x] Responsive frontend
+- [x] Docker-based application setup
+- [x] PostgreSQL integration
+- [x] Legal and privacy information pages
+- [ ] Production cloud deployment
+- [ ] Further cybersecurity awareness features
+- [ ] Continuous improvements based on user feedback
+
+## 🤝 Contributing
+
+We believe a safer internet is a collective responsibility.
+
+Contributions, suggestions, bug reports, and improvements are welcome.
+
+1. Fork the repository or create an authorized feature branch.
+2. Create a new branch for your contribution.
+3. Make your changes.
+4. Test your implementation.
+5. Submit a pull request with a clear description.
+
+## 📜 License
+
+Refer to the repository's `LICENSE` file for licensing information.
+
+## 📬 Connect With Us
+
+Have suggestions, questions, or feedback?
+
+Open an issue in the repository or contact the project maintainers.
+
+---
+
+\<p align="center">
+&#x20; \<strong>🛡️ CyberMitra — Your Safety. Your Awareness. Your Digital Future.\</strong>
+\</p>
+
+\<p align="center">
+&#x20; \<em>Building awareness today for a safer digital tomorrow.\</em>
+\</p>

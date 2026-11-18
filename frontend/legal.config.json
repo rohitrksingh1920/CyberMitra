@@ -1,0 +1,25 @@
+{
+  "_readme": "Facts used by the legal pages (terms, privacy, refund-policy, contact). Fill every empty value, then rebuild. Any empty value shows as a highlighted [[name]] on the page and in the build log. See README.md > 'Legal pages'.",
+
+  "siteName": "CyberMitra",
+  "siteUrl": "",
+  "operatorName": "Team Gen tEch (the CyberMitra project team)",
+  "operatorAddress": "",
+
+  "contactEmail": "rakshitkamboj2@gmail.com",
+  "contactEmail2": "rohitrk.singh1920@gmail.com",
+  "contactPhone": "",
+
+  "grievanceOfficerName": "",
+  "acknowledgeWithinDays": "3",
+  "resolveWithinDays": "30",
+
+  "hostingProvider": "",
+  "hostingCountry": "",
+  "draftRetentionMonths": "12",
+  "backupRetentionDays": "",
+
+  "jurisdictionCity": "",
+  "effectiveDate": "27 October 2026",
+  "lastUpdated": "27 October 2026"
+}

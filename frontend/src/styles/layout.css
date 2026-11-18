@@ -662,9 +662,10 @@ footer a:hover {
 }
 .foot-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.5fr repeat(3, minmax(0, 1fr));
+  gap: 32px;
   margin-bottom: 40px;
+  align-items: start;
 }
 .brand-logo .site-logo {
   width: 270px;
