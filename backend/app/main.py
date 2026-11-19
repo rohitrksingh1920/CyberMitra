@@ -33,6 +33,7 @@ async def lifespan(app: FastAPI):
 
 is_production = settings.ENV.lower() == "production"
 
+
 app = FastAPI(
     title=settings.APP_NAME,
     description=(
@@ -41,10 +42,11 @@ app = FastAPI(
     ),
     version="1.0.0",
     lifespan=lifespan,
-    docs_url=None if is_production else "/api/docs",
-    redoc_url=None if is_production else "/api/redoc",
-    openapi_url=None if is_production else "/api/openapi.json",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
 )
+
 
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
