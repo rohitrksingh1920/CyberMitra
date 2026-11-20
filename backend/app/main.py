@@ -12,6 +12,8 @@ from app.config import settings
 from app.database import init_db
 from app.limiter import limiter
 from app.routers import complaints, suspects, misc
+from fastapi.openapi.docs import get_redoc_html
+from fastapi.responses import HTMLResponse
 
 
 # Never allow the API to start in production with a known/default admin key.
@@ -43,9 +45,20 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan,
     docs_url="/docs",
-    redoc_url="/redoc",
+    redoc_url=None,
     openapi_url="/openapi.json",
 )
+
+@app.get("/redoc", include_in_schema=False)
+async def redoc_html():
+    return get_redoc_html(
+        openapi_url=app.openapi_url,
+        title=f"{app.title} - ReDoc",
+        redoc_js_url=(
+            "https://cdn.jsdelivr.net/npm/"
+            "redoc@2/bundles/redoc.standalone.js"
+        ),
+    )
 
 
 app.state.limiter = limiter
