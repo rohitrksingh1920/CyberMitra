@@ -1,241 +1,324 @@
-# CyberMitra - Cyber Security Solutions
+# 🛡️ CyberMitra – Cyber Security Awareness & Assistance Platform
 
-> **Spot the Scam Before It Spots You.**\
+> **Spot the Scam Before It Spots You.**  
 > Your digital safety companion for a safer internet.
 
-![Project](https://img.shields.io/badge/Project-CyberMitra-2563EB?style=for-the-badge)
-![Frontend](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Database](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Deployment](https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/badge/Project-CyberMitra-2563EB?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Frontend-Vercel-000000?style=for-the-badge&logo=vercel" />
+  <img src="https://img.shields.io/badge/Backend-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black" />
+  <img src="https://img.shields.io/badge/Database-Neon_PostgreSQL-00E699?style=for-the-badge&logo=postgresql&logoColor=black" />
+  <img src="https://img.shields.io/badge/Framework-React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+</p>
 
-CyberMitra is a bilingual cybersecurity awareness and assistance
-platform designed to help people recognize online threats, understand
-cyber fraud, and find practical cybercrime support resources. It brings
-essential digital-safety information together in one accessible place
-for English- and Hindi-speaking users.
+## 🌐 Project Overview
 
-------------------------------------------------------------------------
+**CyberMitra** is a bilingual (English and Hindi) cybersecurity awareness, assistance, and reporting platform developed to help citizens recognize online threats, understand cyber fraud, and access essential cybercrime support resources.
 
-## About the Project
+The project is developed under the community service initiative in coordination with **Shree Durga Samajik Sansthan**, following the organization's approval for the project titled:
 
-The internet creates opportunities for learning, communication, and
-business, but it also exposes people to scams, identity theft, phishing,
-and other cyber threats.
+**"Cyber Security Awareness, Assistance and Reporting Platform."**
 
-CyberMitra aims to make cybersecurity knowledge easier to understand and
-act upon. The platform presents awareness resources, guidance for common
-cyber-fraud situations, and links to relevant support channels.
+The platform aims to promote digital literacy, encourage responsible internet usage, and make cybersecurity information more accessible to citizens.
 
-## Key Features
+CyberMitra brings together cybersecurity awareness resources, suspicious activity checking, complaint assistance, and practical safety guidance through a user-friendly web application.
 
-  -----------------------------------------------------------------------
-  Feature                             Description
-  ----------------------------------- -----------------------------------
-  Fraud Awareness                     Learn about suspicious messages,
-                                      online scams, phishing, and common
-                                      digital threats.
+## 🎯 Project Objectives
 
-  Cybersecurity Support               Access practical guidance for safer
-                                      online activity and responding to
-                                      cyber risks.
+- Promote cybersecurity awareness and digital literacy among citizens.
+- Educate users about phishing, online scams, identity theft, and digital fraud.
+- Provide accessible guidance for cybercrime reporting and complaint assistance.
+- Help users identify suspicious phone numbers, UPI IDs, and website links through community reports.
+- Make cybersecurity resources available in both English and Hindi.
+- Encourage safe and responsible digital practices.
 
-  Complaint Assistance                Find guidance and relevant
-                                      resources for reporting cybercrime.
+## ✨ Key Features
 
-  Emergency Resources                 Access important cybercrime support
-                                      information and reporting
-                                      resources.
+| Feature | Description |
+|---|---|
+| 🛡️ Fraud Awareness | Learn about phishing, online scams, identity theft, and common cyber threats. |
+| 🔍 Suspicious Activity Checker | Check phone numbers, UPI IDs, and website links against reports submitted by other CyberMitra users. |
+| 📝 Cybercrime Reporting | Access cybercrime reporting resources and assistance. |
+| 📄 FIR Format Assistance | Access guidance and formats to help prepare cybercrime complaint information. |
+| 📌 Complaint Tracking | Track submitted CyberMitra complaint drafts using a unique reference code. |
+| 🚨 Emergency Resources | Access important cybercrime helplines and official reporting resources. |
+| 🌐 Bilingual Interface | Access platform information in English and Hindi. |
+| 📱 Responsive Design | Use the platform across desktop, tablet, and mobile devices. |
+| ⚖️ Legal & Privacy Information | Access the platform's available Terms, Privacy, Refund, Shipping, and Contact information. |
 
-  Bilingual Experience                Access platform information in
-                                      English and Hindi.
+**Important:** Community suspicious-activity reports are user-submitted information, not an official government blacklist or confirmation of criminal activity. CyberMitra complaint tracking refers to submissions within the application and does not independently verify official police FIR registration.
 
-  Responsive Interface                Use the platform across desktop and
-                                      mobile screen sizes.
+## 🖥️ Platform Preview
 
-  Legal and Privacy Pages             Review the platform's Terms,
-                                      Privacy, Refund, Shipping, and
-                                      Contact information where provided.
-  -----------------------------------------------------------------------
+CyberMitra provides a user-friendly interface designed to make cybersecurity awareness and assistance accessible to citizens.
 
-## Platform Preview
+Add screenshots of the deployed application in `docs/screenshots/`:
 
-The application includes a user-facing web interface for browsing
-cybersecurity awareness content and support resources.
-
-> Add screenshots of the running application to `docs/screenshots/` and
-> link them here when available.
-
-```{=html}
-<!-- Example:
-![CyberMitra Home Page](docs/screenshots/homepage.png)
--->
+```text
+docs/
+└── screenshots/
+    ├── homepage.png
+    ├── dashboard.png
+    ├── cybercrime-reporting.png
+    ├── suspicious-checker.png
+    └── complaint-tracking.png
 ```
-## Technology Stack
 
-  Layer                        Technology
-  ---------------------------- ---------------------------
-  Frontend                     React
-  Backend API                  FastAPI
-  Database                     PostgreSQL
-  Containerization             Docker and Docker Compose
-  Web Server / Reverse Proxy   Nginx
+Example:
 
-## Project Structure
+```markdown
+![CyberMitra Homepage](docs/screenshots/homepage.png)
+```
 
-``` text
+## 🧰 Technology Stack
+
+CyberMitra uses a modern full-stack architecture with separate frontend, backend, and cloud database services.
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| Frontend | React | User interface and application experience |
+| Backend | FastAPI | REST API and application logic |
+| Database | PostgreSQL | Persistent application data |
+| Database Hosting | Neon | Cloud-hosted PostgreSQL database |
+| Frontend Hosting | Vercel | Frontend deployment and hosting |
+| Backend Hosting | Render | Backend API deployment and hosting |
+| Containerization | Docker | Local development and containerized services |
+| Local Orchestration | Docker Compose | Running application services locally |
+| Web Server | Nginx | Reverse proxy configuration where applicable |
+
+## ☁️ Cloud Deployment Architecture
+
+CyberMitra is deployed using three cloud services that work together to provide a complete application.
+
+```text
+              USERS / CITIZENS
+                     |
+                     v
+          +----------------------+
+          |       VERCEL         |
+          |    React Frontend    |
+          +----------------------+
+                     |
+                     | API Requests
+                     v
+          +----------------------+
+          |       RENDER         |
+          |    FastAPI Backend   |
+          +----------------------+
+                     |
+                     | PostgreSQL Connection
+                     v
+          +----------------------+
+          |        NEON          |
+          |  PostgreSQL Database |
+          +----------------------+
+```
+
+### Deployment Services
+
+**1. Frontend – Vercel**
+
+- Hosts the React frontend.
+- Provides a publicly accessible application URL.
+- Handles frontend deployment and production builds.
+
+**2. Backend – Render**
+
+- Hosts the FastAPI backend.
+- Handles API requests and application logic.
+- Communicates with the PostgreSQL database.
+
+**3. Database – Neon**
+
+- Provides managed cloud PostgreSQL hosting.
+- Stores application data persistently.
+- Allows the backend to connect through a secure database connection string.
+
+### 🌍 Application Access
+
+**Live Application:** Add your Vercel production URL here.
+
+**Backend API:** Add your Render service URL here.
+
+**API Documentation:** `<Render Backend URL>/docs`
+
+The Vercel frontend URL is the primary link to share with users who want to access CyberMitra.
+
+## 📂 Project Structure
+
+```text
 CyberMitra/
-├── backend/                 # FastAPI backend
-├── frontend/                # React frontend
-├── deploy/                  # Deployment-related files
-├── nginx/                   # Nginx configuration
-├── docker-compose.yml       # Main application services
-├── docker-compose.https.yml # HTTPS deployment override
-├── .env.example             # Environment variable template
+│
+├── backend/                  # FastAPI backend
+│   ├── app/
+│   ├── requirements.txt
+│   └── ...
+│
+├── frontend/                 # React frontend
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+│
+├── deploy/                   # Deployment configurations
+├── nginx/                    # Nginx configuration
+├── docker-compose.yml        # Local application services
+├── docker-compose.https.yml  # HTTPS deployment override
+├── .env.example              # Environment variable template
 ├── .gitignore
 └── README.md
 ```
 
-The exact contents may vary as the project evolves.
+*Note: The actual directory structure may vary depending on the current project version.*
 
-## Run Locally with Docker
+## 🚀 Run Locally
 
 ### Prerequisites
 
--   Git
--   Docker Desktop
--   Docker Compose (included with current Docker Desktop releases)
+- Git
+- Docker Desktop
+- Docker Compose
 
 ### 1. Clone the repository
 
-``` bash
+```bash
 git clone https://github.com/rohitrksingh1920/CyberMitra.git
+
 cd CyberMitra
 ```
 
-### 2. Create the environment file
+### 2. Configure environment variables
 
-On Windows Command Prompt:
+For Windows:
 
-``` bat
+```bash
 copy .env.example .env
 ```
 
-On macOS or Linux:
+For macOS/Linux:
 
-``` bash
+```bash
 cp .env.example .env
 ```
 
-Open `.env` and configure the required values. Set a strong PostgreSQL
-password and a strong `ADMIN_API_KEY`. Do not commit `.env` or share its
-secrets.
+Configure the required environment variables in `.env`.
+
+Use secure credentials and never commit secret keys, database URLs, or passwords to GitHub.
 
 ### 3. Build and start the application
 
-``` bash
+```bash
 docker compose up --build -d
 ```
 
-### 4. Check container status
+### 4. Check running containers
 
-``` bash
+```bash
 docker compose ps
 ```
 
 ### 5. View application logs
 
-``` bash
+```bash
 docker compose logs -f
 ```
 
 ### 6. Stop the application
 
-``` bash
+```bash
 docker compose down
 ```
 
-To remove the containers and the associated named database volume, use
-`docker compose down -v` only when you intentionally want to delete the
-local database data.
+To remove containers and the associated named database volume:
 
-## Deployment
+```bash
+docker compose down -v
+```
 
-CyberMitra includes Docker Compose and Nginx configuration intended to
-support deployment on a Linux server, such as an AWS EC2 instance.
+**Warning:** This command can permanently delete your local database data.
 
-Before enabling HTTPS:
+## 🔐 Security and Privacy
 
-1.  Point your domain and any required subdomain records to the server.
-2.  Configure the production environment variables securely.
-3.  Restrict inbound server access to the required ports using the cloud
-    firewall/security group.
-4.  Verify the HTTP deployment before requesting certificates.
-5.  Configure and test certificate renewal and Nginx reload behavior.
+CyberMitra follows important security practices to help protect application data and user information.
 
-The HTTPS configuration requires a domain that resolves to the server.
-Do not run the certificate initialization script until DNS and server
-access are configured.
+- Keep environment files and credentials out of version control.
+- Store production secrets securely in deployment environment settings.
+- Never expose database credentials or private API keys to the frontend.
+- Use HTTPS for production communication.
+- Configure CORS for authorized frontend domains.
+- Restrict database access to trusted services.
+- Validate and sanitize user inputs.
+- Keep application dependencies and deployment environments updated.
+- Review privacy policies and legal information before public release.
 
-## Security and Privacy
+## 🧪 Testing and Verification
 
--   Keep `.env` files and credentials out of version control.
--   Use strong, unique production secrets.
--   Do not expose database ports publicly unless there is a specific
-    secured requirement.
--   Configure CORS for the actual production domains.
--   Keep Docker images and application dependencies updated.
--   Do not publish private keys, certificates, database dumps, or user
-    data.
--   Review the application's legal and privacy pages before public
-    release.
+Before releasing changes, verify the following:
 
-## Testing and Verification
+- [ ] Frontend loads successfully through Vercel.
+- [ ] Backend API responds successfully through Render.
+- [ ] Backend connects successfully to Neon PostgreSQL.
+- [ ] User-submitted reports are stored persistently.
+- [ ] Suspicious number, UPI ID, and link checking works.
+- [ ] Complaint reference codes are generated correctly.
+- [ ] Complaint tracking retrieves the correct submission.
+- [ ] FIR assistance functionality works as expected.
+- [ ] English and Hindi interfaces work correctly.
+- [ ] Application is responsive across desktop and mobile devices.
 
-Before deployment, verify that:
+## 🗺️ Project Roadmap
 
--   The frontend loads successfully.
--   Backend API requests reach the FastAPI service through Nginx.
--   The database connection is healthy.
--   Environment variables are configured for the target environment.
--   The application works on desktop and mobile layouts.
--   HTTPS and certificate renewal are tested on the target server.
+- [ ] Expand cybersecurity awareness resources.
+- [ ] Improve English and Hindi educational content.
+- [ ] Enhance suspicious activity reporting and verification.
+- [ ] Improve complaint assistance and tracking.
+- [ ] Conduct cybersecurity awareness activities with the NGO.
+- [ ] Improve accessibility and mobile experience.
+- [ ] Strengthen application security and monitoring.
+- [ ] Continue improving the production deployment.
 
-## Project Roadmap
+## 🤝 Community Service Collaboration
 
--   [ ] Continue improving English and Hindi content.
--   [ ] Expand cybersecurity awareness resources.
--   [ ] Improve the reporting and support guidance.
--   [ ] Complete production deployment.
--   [ ] Verify HTTPS renewal and operational monitoring.
--   [ ] Improve accessibility and mobile experience.
+CyberMitra is being developed as part of a community service initiative in coordination with:
 
-## Contributing
+**Shree Durga Samajik Sansthan**
+
+**Approved Project Title:** Cyber Security Awareness, Assistance and Reporting Platform.
+
+The initiative focuses on spreading cybersecurity awareness, educating citizens about online threats, and helping people access appropriate cybercrime assistance and reporting resources.
+
+The project aims to contribute towards a safer and more digitally aware community.
+
+## 🤝 Contributing
 
 Contributions, suggestions, and bug reports are welcome.
 
-1.  Fork the repository.
-2.  Create a feature branch.
-3.  Make your changes.
-4.  Test the changes locally.
-5.  Open a pull request with a clear description.
+1. Fork the repository.
+2. Create a new feature branch.
+3. Make your changes.
+4. Test your implementation.
+5. Submit a pull request with a clear description.
 
-Please do not include passwords, API keys, private certificates,
-database backups, or personal data in commits.
+Please do not include passwords, API keys, private certificates, database backups, or personal information in commits.
 
-## License
+## 📜 License
 
-Refer to the repository's `LICENSE` file for licensing terms, if
-present.
+Refer to the repository's `LICENSE` file for licensing terms, if present.
 
-## Contact and Support
+## 📬 Contact & Support
 
-For project questions, suggestions, or feedback, open an issue in the
-[CyberMitra GitHub
-repository](https://github.com/rohitrksingh1920/CyberMitra).
+For project-related questions, suggestions, or feedback, please open an issue in the GitHub repository.
 
-------------------------------------------------------------------------
+**GitHub Repository:**  
+https://github.com/rohitrksingh1920/CyberMitra
 
-**CyberMitra - Your Safety, Your Awareness, Your Digital Future.**
+---
+
+<p align="center">
+
+**🛡️ CyberMitra – Your Safety, Your Awareness, Your Digital Future.**
 
 *Building awareness today for a safer digital tomorrow.*
+
+</p>
