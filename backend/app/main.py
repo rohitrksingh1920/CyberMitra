@@ -48,6 +48,20 @@ app = FastAPI(
     redoc_url=None,
     openapi_url="/openapi.json",
 )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://cybermitra-frontend.vercel.app",
+        "http://localhost:5173",
+    ],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
+    allow_headers=[
+        "Content-Type",
+        "Authorization",
+        "X-Admin-Key",
+    ],
+)
 
 
 @app.get("/redoc", include_in_schema=False, response_class=HTMLResponse)
