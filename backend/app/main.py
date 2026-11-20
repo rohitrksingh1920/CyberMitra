@@ -49,16 +49,29 @@ app = FastAPI(
     openapi_url="/openapi.json",
 )
 
-@app.get("/redoc", include_in_schema=False)
+
+@app.get("/redoc", include_in_schema=False, response_class=HTMLResponse)
 async def redoc_html():
-    return get_redoc_html(
+    response = get_redoc_html(
         openapi_url=app.openapi_url,
         title=f"{app.title} - ReDoc",
         redoc_js_url=(
-            "https://cdn.jsdelivr.net/npm/"
-            "redoc@2/bundles/redoc.standalone.js"
+            "https://cdn.redoc.ly/redoc/v3.x/"
+            "bundles/redoc.standalone.js"
         ),
+        with_google_fonts=False,
     )
+
+    html = response.body.decode("utf-8")
+
+    html = html.replace(
+        "<script src=",
+        '<script type="module" src=',
+        1,
+    )
+
+    return HTMLResponse(content=html)
+
 
 
 app.state.limiter = limiter
