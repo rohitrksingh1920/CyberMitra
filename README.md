@@ -12,6 +12,16 @@
   <img src="https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
 </p>
 
+<p align="center">
+  <a href="https://cybermitra-frontend.vercel.app/">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-CyberMitra-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"/>
+  </a>
+</p>
+
+<p align="center">
+  **🌐 Live Application:**  
+  <a href="https://cybermitra-frontend.vercel.app/">CyberMitra – Try It Now</a>
+</p>
 ## 🌐 Project Overview
 
 **CyberMitra** is a bilingual (English and Hindi) cybersecurity awareness, assistance, and reporting platform developed to help citizens recognize online threats, understand cyber fraud, and access essential cybercrime support resources.
@@ -322,3 +332,5 @@ https://github.com/rohitrksingh1920/CyberMitra
 *Building awareness today for a safer digital tomorrow.*
 
 </p>
+
+**© 2026 CyberMitra. All Rights Reserved. Created by GentEch.**
