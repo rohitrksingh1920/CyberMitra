@@ -1,10 +1,11 @@
 
-
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.openapi.docs import get_redoc_html
+
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 
@@ -12,8 +13,6 @@ from app.config import settings
 from app.database import init_db
 from app.limiter import limiter
 from app.routers import complaints, suspects, misc
-from fastapi.openapi.docs import get_redoc_html
-from fastapi.responses import HTMLResponse
 
 
 # Never allow the API to start in production with a known/default admin key.
@@ -23,17 +22,20 @@ if settings.ENV.lower() == "production":
         "change-this-admin-key",
         "change_me_to_a_long_random_string",
     }
-    if not settings.ADMIN_API_KEY or settings.ADMIN_API_KEY.strip().lower() in unsafe_admin_keys:
-        raise RuntimeError("A unique, strong ADMIN_API_KEY is required in production.")
+
+    if (
+        not settings.ADMIN_API_KEY
+        or settings.ADMIN_API_KEY.strip().lower() in unsafe_admin_keys
+    ):
+        raise RuntimeError(
+            "A unique, strong ADMIN_API_KEY is required in production."
+        )
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
     yield
-
-
-is_production = settings.ENV.lower() == "production"
 
 
 app = FastAPI(
@@ -48,23 +50,41 @@ app = FastAPI(
     redoc_url=None,
     openapi_url="/openapi.json",
 )
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://cybermitra-frontend.vercel.app",
-        "http://localhost:5173",
-    ],
-    allow_credentials=False,
-    allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
-    allow_headers=[
-        "Content-Type",
-        "Authorization",
-        "X-Admin-Key",
-    ],
+
+
+# Rate limiting
+app.state.limiter = limiter
+app.add_exception_handler(
+    RateLimitExceeded,
+    _rate_limit_exceeded_handler,
 )
 
 
-@app.get("/redoc", include_in_schema=False, response_class=HTMLResponse)
+# CORS: Register only ONCE.
+allowed_origins = list(
+    set(settings.cors_origins_list)
+    | {
+        "https://cybermitra-frontend.vercel.app",
+        "http://localhost:5173",
+        "http://localhost:3000",
+    }
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+# ReDoc documentation
+@app.get(
+    "/redoc",
+    include_in_schema=False,
+    response_class=HTMLResponse,
+)
 async def redoc_html():
     response = get_redoc_html(
         openapi_url=app.openapi_url,
@@ -76,53 +96,58 @@ async def redoc_html():
         with_google_fonts=False,
     )
 
-    html = response.body.decode("utf-8")
-
-    html = html.replace(
-        "<script src=",
-        '<script type="module" src=',
-        1,
-    )
-
-    return HTMLResponse(content=html)
+    return HTMLResponse(content=response.body)
 
 
-
-app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
-    # This application uses explicit headers; cookie credentials are not enabled by default.
-    allow_credentials=False,
-    allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
-    allow_headers=["Content-Type", "Authorization", "X-Admin-Key"],
+# API routers
+app.include_router(
+    complaints.router,
+    prefix=settings.API_V1_PREFIX,
 )
 
-app.include_router(complaints.router, prefix=settings.API_V1_PREFIX)
-app.include_router(suspects.router, prefix=settings.API_V1_PREFIX)
-app.include_router(misc.router, prefix=settings.API_V1_PREFIX)
+app.include_router(
+    suspects.router,
+    prefix=settings.API_V1_PREFIX,
+)
+
+app.include_router(
+    misc.router,
+    prefix=settings.API_V1_PREFIX,
+)
 
 
+# Health check
 @app.get("/api/health")
 def health_check():
-    # Do not disclose deployment environment details in the public health response.
-    return {"status": "ok", "service": settings.APP_NAME}
+    return {
+        "status": "ok",
+        "service": settings.APP_NAME,
+    }
 
+
+# Root endpoint
 @app.get("/")
 def root():
     return {
         "status": "ok",
         "message": "Welcome to CyberMitra API",
-        "docs": "/docs"
+        "docs": "/docs",
+        "redoc": "/redoc",
+        "health": "/api/health",
     }
 
 
+# Global exception handler
 @app.exception_handler(Exception)
-async def unhandled_exception_handler(request: Request, exc: Exception):
-    # Keep internal exception details out of public responses.
+async def unhandled_exception_handler(
+    request: Request,
+    exc: Exception,
+):
     return JSONResponse(
         status_code=500,
-        content={"detail": "Internal server error. Please try again shortly."},
+        content={
+            "detail": (
+                "Internal server error. Please try again shortly."
+            )
+        },
     )
